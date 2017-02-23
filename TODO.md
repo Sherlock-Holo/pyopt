@@ -1,0 +1,1 @@
+直接调用libalpm，在调用pacman版本完成之后
