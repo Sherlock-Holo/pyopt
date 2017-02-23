@@ -7,7 +7,9 @@ class optdep(object):
         test = test.split()
 
         lengh = len(test)
+        optdep_list = []
+        start_site = test.index('可选依赖')
+        stop_site = test.index('要求被')
 
-        for info in range(1,lengh):
-            if test[info] == '可选依赖':
-                
+        for site in range(start_site,stop_site):
+            optdep_list.append(test[site])
