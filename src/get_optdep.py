@@ -6,7 +6,8 @@ class optdep(object):
     def get_optdep_list(self, pkgname):
         bytes = subprocess.check_output(['pacman', '-Qi', pkgname])
         test = bytes.decode('utf-8')
-        info = test.split()
+        info = test.replace(':','')
+        info = info.split()
 
         lengh = len(info)
         optdep_raw_list = []
@@ -21,6 +22,14 @@ class optdep(object):
             try:
                 optdep_bytes = subprocess.check_output(['pacman', '-Qq', optdep_raw_list[x]])
                 optdep_test = optdep_bytes.decode('utf-8')
+                optdep_test = optdep_test.replace('\n','')
                 optdep_list.append(optdep_test)
+            except Exception:
+                pass
 
         return optdep_list
+
+# test
+netease = optdep()
+nete = netease.get_optdep_list('netease-musicbox-git')
+print(nete)
