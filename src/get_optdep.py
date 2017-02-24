@@ -1,15 +1,17 @@
 import subprocess
 
 class optdep(object):
-    def get_raw_info(self,pkgname):
-        bytes = subprocess.check_output(['pacman','-Qi','pkgname'])
+    def get_optdep_list(self,pkgname):
+        bytes = subprocess.check_output(['pacman','-Qi',pkgname])
         test = bytes.decode('utf-8')
-        test = test.split()
+        info = test.split()
 
-        lengh = len(test)
+        lengh = len(info)
         optdep_list = []
-        start_site = test.index('可选依赖')
-        stop_site = test.index('要求被')
+        start_site = info.index('可选依赖')
+        stop_site = info.index('要求被')
 
         for site in range(start_site,stop_site):
-            optdep_list.append(test[site])
+            optdep_list.append(info[site])
+
+        return optdep_list
