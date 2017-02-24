@@ -28,8 +28,3 @@ class optdep(object):
                 pass
 
         return optdep_list
-
-# test
-netease = optdep()
-nete = netease.get_optdep_list('netease-musicbox-git')
-print(nete)
