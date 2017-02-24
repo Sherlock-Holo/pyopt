@@ -8,7 +8,7 @@ class optdep(object):
 
         lengh = len(info)
         optdep_list = []
-        start_site = info.index('可选依赖')
+        start_site = info.index('可选依赖') + 1
         stop_site = info.index('要求被')
 
         for site in range(start_site,stop_site):
